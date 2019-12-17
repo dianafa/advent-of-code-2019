@@ -17,11 +17,17 @@
 
  What is the sum of the fuel requirements for all of the modules on your spacecraft?
  */
+const { fileByLine } = require('../utils');
 
-console.log('diana');
 
-const main = () => 1.3;
+const computeFuel = (mass: number) => Math.floor(mass/3) - 2;
+
+const result = () => {
+    console.log(fileByLine('src/01.1/input'));
+};
+
+result();
 
 module.exports = {
-  main
+  computeFuel
 };

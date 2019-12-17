@@ -1,4 +1,4 @@
-const { main } = require('./main');
+const { computeFuel } = require('./main');
 
 describe('01.1', () => {
   const testCases = [
@@ -9,8 +9,8 @@ describe('01.1', () => {
   ];
 
   testCases.forEach(([input, expected]) =>
-    test('Main function', () => {
-      expect(main(input)).toBe(expected);
+    test('computeFuel function', () => {
+      expect(computeFuel(input)).toBe(expected);
     })
   );
 });
