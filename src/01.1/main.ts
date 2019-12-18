@@ -20,14 +20,23 @@
 const { fileByLine } = require('../utils');
 
 
-const computeFuel = (mass: number) => Math.floor(mass/3) - 2;
+const computeFuel = (mass: number): number => mass > 2 ? Math.floor(mass/3) - 2 : 0;
 
-const result = () => {
-    console.log(fileByLine('src/01.1/input'));
+const computeSum = (masses: string[]): number => masses
+        .map((mass: string) => parseInt(mass, 10))
+        .reduce((total: number, mass: number) => total + computeFuel(mass), 0);
+
+const result = (): number => {
+    const file = fileByLine('src/01.1/input');
+    const masses = file.split('\n');
+
+    return computeSum(masses);
 };
 
-result();
+const res = result();
+console.log('result:\n', res);
 
-module.exports = {
-  computeFuel
-};
+export {
+    computeFuel,
+    computeSum
+}
