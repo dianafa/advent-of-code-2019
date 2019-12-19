@@ -32,8 +32,7 @@ const { fileByLine } = require('../utils');
 const computeSum = (masses: string[]): number => 1;
 
 const result = (): number => {
-    const file = fileByLine('src/01.2/input');
-    const masses = file.split('\n');
+    const masses = fileByLine('src/01/input');
 
     return computeSum(masses);
 };

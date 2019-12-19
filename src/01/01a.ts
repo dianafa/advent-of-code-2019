@@ -17,18 +17,15 @@
 
  What is the sum of the fuel requirements for all of the modules on your spacecraft?
  */
-const { fileByLine } = require('../utils');
-
-
-const computeFuel = (mass: number): number => mass > 2 ? Math.floor(mass/3) - 2 : 0;
+import { fileByLine } from '../utils';
+import { computeFuel } from './common';
 
 const computeSum = (masses: string[]): number => masses
         .map((mass: string) => parseInt(mass, 10))
         .reduce((total: number, mass: number) => total + computeFuel(mass), 0);
 
 const result = (): number => {
-    const file = fileByLine('src/01.1/input');
-    const masses = file.split('\n');
+    const masses = fileByLine('src/01/input');
 
     return computeSum(masses);
 };
