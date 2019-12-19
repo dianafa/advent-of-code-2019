@@ -27,9 +27,23 @@
  when also taking into account the mass of the added fuel?
  (Calculate the fuel requirements for each module separately, then add them all up at the end.)
  */
-const { fileByLine } = require('../utils');
 
-const computeSum = (masses: string[]): number => 1;
+import {computeFuel} from "./common";
+import {fileByLine} from '../utils';
+
+export const computeTotalFuel = (mass: number): number => {
+    if (mass <= 2) {
+        return 0;
+    }
+
+    const fuel = computeFuel(mass);
+    return fuel + computeTotalFuel(fuel);
+};
+
+export const computeSum = (masses: string[]): number =>
+    masses
+        .map((mass: string) => parseInt(mass, 10))
+        .reduce((total: number, mass: number) => total + computeTotalFuel(mass), 0);
 
 const result = (): number => {
     const masses = fileByLine('src/01/input');
@@ -39,7 +53,3 @@ const result = (): number => {
 
 const res = result();
 console.log('result:\n', res);
-
-export {
-    computeSum
-}

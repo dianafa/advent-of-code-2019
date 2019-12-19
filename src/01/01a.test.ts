@@ -9,7 +9,7 @@ describe('01a', () => {
         ];
 
         testCases.forEach(({input, expected} :  { input: string[], expected: number }) =>
-            test('works', () => {
+            test(`works for ${input}`, () => {
                 expect(computeSum(input)).toEqual(expected);
             }),
         );
